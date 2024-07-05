@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_bill"
+        android:title="@string/nav_diary"
+        android:icon="@drawable/ic_event_note"
+        android:checked="true" />
+    <item
+        android:id="@+id/navigation_statistics"
+        android:title="@string/nav_mine"
+        android:icon="@drawable/ic_mine" />
+</menu>
