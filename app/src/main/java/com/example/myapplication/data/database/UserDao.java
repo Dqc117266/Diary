@@ -1,11 +1,11 @@
 package com.example.myapplication.data.database;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
+import androidx.room.Update;
 
 import com.example.myapplication.data.database.model.UserModel;
 
@@ -23,6 +23,9 @@ public interface UserDao {
 
     @Query("SELECT COUNT(*) FROM users WHERE username = :username")
     int checkUsernameExists(String username);
+
+    @Update
+    void update(UserModel userModel);  // 添加更新用户信息的方法
 
     @Transaction
     default boolean register(UserModel userModel) {

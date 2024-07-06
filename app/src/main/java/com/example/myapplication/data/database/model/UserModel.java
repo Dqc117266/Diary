@@ -11,10 +11,27 @@ public class UserModel implements Serializable {
     public int id;
     public String username;
     public String password;
+    public String nickname;
     public String avatarPath; //头像地址
     public String locationStr; //所在地
     public String dataOfBirth;//出生日期
     public String self; //自我介绍
     public String favorite; //爱好
     public String types; //类型
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", avatarPath='" + avatarPath + '\'' +
+                ", locationStr='" + locationStr + '\'' +
+                ", dataOfBirth='" + dataOfBirth + '\'' +
+                ", self='" + self + '\'' +
+                ", favorite='" + favorite + '\'' +
+                ", types='" + types + '\'' +
+                '}';
+    }
 }

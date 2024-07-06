@@ -3,10 +3,8 @@ package com.example.myapplication.presentation.screen.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -28,7 +26,6 @@ public class MainActivity extends BaseActivity implements NavController.OnDestin
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -44,13 +41,13 @@ public class MainActivity extends BaseActivity implements NavController.OnDestin
         binding.fabAdd.setLayoutParams(layoutParams);
 
         binding.fabAdd.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-
-//            if (!UserPreferencesUtil.getInstance(this).isUserLoggedIn()) {
-//                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//                startActivity(intent);
-//            }
+            if (!UserPreferencesUtil.getInstance(this).isUserLoggedIn()) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(MainActivity.this, AddDiaryActivity.class);
+                startActivity(intent);
+            }
         });
     }
 

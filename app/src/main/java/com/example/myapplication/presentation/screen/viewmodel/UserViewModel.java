@@ -1,6 +1,6 @@
 package com.example.myapplication.presentation.screen.viewmodel;
 
-import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.myapplication.data.database.model.UserModel;
 import com.example.myapplication.domain.repository.UserRepository;
@@ -10,7 +10,7 @@ import com.example.myapplication.domain.usecase.user.InsertUserUseCase;
 import com.example.myapplication.domain.usecase.user.UserLoginUseCase;
 import com.example.myapplication.domain.usecase.user.UserRegisterUseCase;
 
-public class UserViewModel {
+public class UserViewModel extends ViewModel {
     private final UserRepository userRepository;
     private final UserLoginUseCase userLoginUseCase;
     private final UserRegisterUseCase userRegisterUseCase;

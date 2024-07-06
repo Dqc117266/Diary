@@ -13,6 +13,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/nav_diary"/>
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintRight_toLeftOf="@+id/addTabButton"
+        app:tabMode="scrollable"
+        app:tabGravity="fill" />
+
+    <!-- ViewPager，用于管理 TabLayout 中的页面 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/addTabButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        android:clickable="true"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="@id/tabLayout"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

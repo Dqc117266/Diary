@@ -1,12 +1,12 @@
 package com.example.myapplication.presentation.screen.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.data.database.AppDatabase;
@@ -24,9 +24,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
-
         setContentView(binding.getRoot());
 
         viewModel = new ViewModelProvider(this, new ViewModelProvider.Factory() {
@@ -89,7 +87,8 @@ public class LoginActivity extends BaseActivity {
         viewModel.getLoginUser().observe(this, user -> {
             if (user != null) {
                 UserPreferencesUtil.getInstance(LoginActivity.this).saveCurrentUser(user);
-                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                setResult(Activity.RESULT_OK);
                 finish();
             }
         });

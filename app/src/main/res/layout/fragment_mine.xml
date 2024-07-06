@@ -11,10 +11,25 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/nav_mine"/>
+        app:title="@string/nav_mine">
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/outLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:textColor="@color/material_dynamic_primary50"
+            android:text="退出登录"/>
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <RelativeLayout
+        android:id="@+id/userItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
@@ -42,6 +57,14 @@
             style="@style/TextAppearance.Material3.TitleMedium"
             android:textStyle="bold"
             android:text="用户名"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chevron_right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"/>
 
     </RelativeLayout>
 

@@ -1,7 +1,5 @@
 package com.example.myapplication.domain.usecase.user;
 
-import androidx.lifecycle.LiveData;
-
 import com.example.myapplication.data.database.model.UserModel;
 import com.example.myapplication.domain.repository.UserRepository;
 

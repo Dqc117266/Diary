@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Diary"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.screen.activity.AddDiaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.screen.activity.UserInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.screen.activity.DiaryDetailActivity"
             android:exported="false" />
         <activity

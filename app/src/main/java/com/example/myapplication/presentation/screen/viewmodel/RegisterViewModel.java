@@ -10,7 +10,6 @@ import com.example.myapplication.domain.repository.UserRepository;
 import com.example.myapplication.domain.usecase.user.UserRegisterUseCase;
 
 public class RegisterViewModel extends ViewModel {
-    private final UserRepository userRepository;
     private final UserRegisterUseCase userRegisterUseCase;
 
     private final MutableLiveData<String> username = new MutableLiveData<>();
@@ -19,7 +18,6 @@ public class RegisterViewModel extends ViewModel {
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
     public RegisterViewModel(UserRepository userRepository) {
-        this.userRepository = userRepository;
         this.userRegisterUseCase = new UserRegisterUseCase(userRepository);
     }
 
@@ -79,6 +77,7 @@ public class RegisterViewModel extends ViewModel {
         UserModel userModel = new UserModel();
         userModel.username = usernameValue;
         userModel.password = passwordValue;
+        userModel.types = "我的日记,学习笔记,日常生活";
 
         AppDatabase.databaseWriteExecutor.submit(()-> {
             boolean success = userRegisterUseCase.execute(userModel);
