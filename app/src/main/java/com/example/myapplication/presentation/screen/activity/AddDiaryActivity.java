@@ -40,6 +40,9 @@ public class AddDiaryActivity extends BaseActivity {
     private ActivityAddDiaryBinding binding;
     private String imagePath;
     private AddDiaryViewModel viewModel;
+    private boolean isUpdateDiary = false;
+    private String currentDate;
+    private int currentId;
     private ActivityResultLauncher<String[]> requestPermissions = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), permissions -> {
                 if (permissions.containsKey(Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -107,6 +110,34 @@ public class AddDiaryActivity extends BaseActivity {
             binding.spinnerType.setAdapter(adapter);
         }
 
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("diaryModel")) {
+            DiaryModel diaryModel = (DiaryModel) getIntent().getSerializableExtra("diaryModel");
+            isUpdateDiary = true;
+            // 使用传递的数据进行操作
+            if (diaryModel != null) {
+                binding.titleContent.setText(diaryModel.diaryName);
+                binding.diaryInputContent.setText(diaryModel.diaryContent);
+                currentId = diaryModel.id;
+                currentDate = diaryModel.date;
+
+                if (diaryModel.imagePath != null && !diaryModel.imagePath.isEmpty()) {
+                    imagePath = diaryModel.imagePath;
+                    binding.imageContent.setImageURI(Uri.parse(diaryModel.imagePath));
+                    binding.imageContent.setVisibility(View.VISIBLE);
+                }
+
+                // 获取 classify 对应的 Spinner 选项位置
+                ArrayAdapter<String> adapter = (ArrayAdapter<String>) binding.spinnerType.getAdapter();
+                if (adapter != null) {
+                    int position = adapter.getPosition(diaryModel.classify);
+                    if (position >= 0) {
+                        binding.spinnerType.setSelection(position);
+                    }
+                }
+            }
+        }
+
         binding.saveDiaryButton.setOnClickListener(v -> saveDiary());
         binding.imageSelect.setOnClickListener(v -> requestPermissions());
     }
@@ -153,11 +184,16 @@ public class AddDiaryActivity extends BaseActivity {
         diaryModel.diaryName = titleContent;
         diaryModel.diaryContent = diaryContent;
         diaryModel.classify = binding.spinnerType.getSelectedItem().toString();
-        diaryModel.date = DateTimeUtil.getCurrentDateTime();
+        diaryModel.date = currentDate != null ? currentDate : DateTimeUtil.getCurrentDateTime();
         diaryModel.imagePath = imagePath;
         diaryModel.userId = UserPreferencesUtil.getInstance(this).getCurrentUser().id;
 
-        viewModel.saveDiary(diaryModel, this::handleUpdateResult);
+        if (isUpdateDiary) {
+            diaryModel.id = currentId;
+            viewModel.updateDiary(diaryModel, this::handleUpdateResult);
+        } else {
+            viewModel.saveDiary(diaryModel, this::handleUpdateResult);
+        }
     }
 
     private void handleUpdateResult(boolean success) {

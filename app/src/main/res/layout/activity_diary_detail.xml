@@ -7,4 +7,77 @@
     android:layout_height="match_parent"
     tools:context=".presentation.screen.activity.DiaryDetailActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/ic_arrow_back" />
+
+    <androidx.core.widget.NestedScrollView
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="48dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/typeTextView"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="类别：日记"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/material_dynamic_neutral50"
+                style="@style/TextAppearance.Material3.LabelMedium"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/dateTextView"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2024-1-1"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/material_dynamic_neutral50"
+                style="@style/TextAppearance.Material3.LabelMedium"/>
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_gravity="center" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/contentTextView"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="centent"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/material_dynamic_neutral10"
+                style="@style/TextAppearance.Material3.TitleSmall"/>
+
+            <Space
+                android:id="@+id/bottomSpace"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -165,6 +165,7 @@
                     app:boxCornerRadiusBottomEnd="4dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/diaryInputContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minLines="3"

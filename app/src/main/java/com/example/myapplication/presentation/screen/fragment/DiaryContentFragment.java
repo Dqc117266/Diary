@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,8 +66,23 @@ public class DiaryContentFragment extends Fragment {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(adapter);
 
+        adapter.setOnItemDeleteListener(diaryModel -> {
+            viewModel.deleteDiary(diaryModel, this::handleUpdateResult);
+        });
+
         viewModel.getDiariesLiveData().observe(getViewLifecycleOwner(), diaries -> {
             adapter.submitList(diaries);
         });
     }
+
+    private void handleUpdateResult(boolean success) {
+        if (success) {
+            Toast.makeText(getContext(), "删除成功", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(getContext(), "删除失败", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }

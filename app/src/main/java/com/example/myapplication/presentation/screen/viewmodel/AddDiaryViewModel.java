@@ -32,4 +32,8 @@ public class AddDiaryViewModel extends ViewModel {
         insertDiaryUseCase.execute(diaryModel, listener);
     }
 
+    public void updateDiary(DiaryModel diaryModel, OnOperationCompleteListener listener) {
+        updateDiaryUseCase.execute(diaryModel, listener);
+    }
+
 }
