@@ -29,8 +29,8 @@ public class DiaryViewModel extends ViewModel {
     }
 
     // 获取特定用户的日记列表
-    public LiveData<List<DiaryModel>> getDiariesByUserId(int userId) {
-        return getDiariesByUserIdUseCase.execute(userId);
+    public LiveData<List<DiaryModel>> getDiariesByUserId(int userId, String classify) {
+        return getDiariesByUserIdUseCase.execute(userId, classify);
     }
 
     // 插入新日记

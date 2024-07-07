@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 public interface DiaryRepository {
-    LiveData<List<DiaryModel>> getDiariesByUserId(int userId);
+    LiveData<List<DiaryModel>> getDiariesByUserId(int userId, String classify);
 
     Future<?> updateDiary(DiaryModel diaryModel);
 

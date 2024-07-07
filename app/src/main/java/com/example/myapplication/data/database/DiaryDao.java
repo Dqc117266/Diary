@@ -14,8 +14,8 @@ import java.util.List;
 @Dao
 public interface DiaryDao {
 
-    @Query("SELECT * FROM DiaryList WHERE userId = :userId")
-    LiveData<List<DiaryModel>> getDiariesByUserId(int userId);
+    @Query("SELECT * FROM DiaryList WHERE userId = :userId and classify = :classify")
+    LiveData<List<DiaryModel>> getDiariesByUserId(int userId, String classify);
 
     @Update
     void updateDiary(DiaryModel diaryModel);

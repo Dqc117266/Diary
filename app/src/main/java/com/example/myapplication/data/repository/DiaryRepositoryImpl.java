@@ -18,8 +18,8 @@ public class DiaryRepositoryImpl implements DiaryRepository {
     }
 
     @Override
-    public LiveData<List<DiaryModel>> getDiariesByUserId(int userId) {
-        return diaryDao.getDiariesByUserId(userId);
+    public LiveData<List<DiaryModel>> getDiariesByUserId(int userId, String classify) {
+        return diaryDao.getDiariesByUserId(userId, classify);
     }
 
     @Override

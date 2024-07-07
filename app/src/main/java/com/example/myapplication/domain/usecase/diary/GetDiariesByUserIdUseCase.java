@@ -16,7 +16,7 @@ public class GetDiariesByUserIdUseCase {
         this.diaryRepository = diaryRepository;
     }
 
-    public LiveData<List<DiaryModel>> execute(int userId) {
-        return diaryRepository.getDiariesByUserId(userId);
+    public LiveData<List<DiaryModel>> execute(int userId, String classify) {
+        return diaryRepository.getDiariesByUserId(userId, classify);
     }
 }
